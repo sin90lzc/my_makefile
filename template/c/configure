@@ -1,0 +1,3 @@
+#!/bin/bash
+rm config
+echo "ROOT=$(pwd)/$(dirname ${0})">> config
