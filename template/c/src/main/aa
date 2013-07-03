@@ -1,0 +1,5 @@
+A=libso.a
+A:=$(notdir ${A})
+A:=${A:.a=}
+all:
+	echo "${A}"	

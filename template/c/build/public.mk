@@ -94,7 +94,12 @@ LINK_LIB_PATH:=$(addprefix -L,${LINK_LIB_PATH})
 endif
 
 #用于链接的函数库，默认当前模块生成的函数库
-LINK_LIB?=$(strip $(patsubst lib,,$($($(notdir ${LIBA} ${LIBSO}):.a=):.so=)))
+LINK_LIB?=${LIBA} ${LIBSO}
+LINK_LIB:=$(notdir ${LINK_LIB})
+LINK_LIB:=${LINK_LIB:.a=}
+LINK_LIB:=${LINK_LIB:.so=}
+LINK_LIB:=$(strip $(patsubst lib%,%,${LINK_LIB}))
+#LINK_LIB:=$(strip $(patsubst lib,,$($($(notdir ${LINK_LIB}):.a=):.so=)))
 ifneq (${LINK_LIB},"")
 LINK_LIB:=$(addprefix -l,${LINK_LIB})
 endif
@@ -107,12 +112,11 @@ endif
 
 #all目标
 all:${LIBA} ${LIBSO} ${BIN}
-	@echo ""; \
-	echo "complete target all! :-)"; \
-	echo ""
 
 #引入依赖文件，如果不存在相应的依赖文件，由对应的目标生成。
+ifneq (${MAKECMDGOALS},clean)
 -include ${DEPS}
+endif
 
 
 #一些目录的生成
@@ -147,7 +151,4 @@ ${DIR_DEPS}/%.dep:${DIR_DEPS_TMP} %.c
 #清理目标规则
 clean:
 	${RM} ${RMFLAGS} ${FILES2CLEAN}
-	@echo ""; \
-	echo "complete target all! :-)"; \
-	echo ""
 

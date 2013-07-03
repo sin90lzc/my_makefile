@@ -1,0 +1,13 @@
+C项目的makefile模板
+
+子目录说明；
+build：项目构建的目录，用于存放构建时生成的lib和bin
+build/lib:项目构建时生成的函数库存放目录
+build/bin:项目构建时生成的可执行文件存放目录
+src：项目源代码目录
+tests：单元测试用目录
+include：头文件目录
+docs：项目说明文档保存目录
+
+文件说明：
+build/public.mk：makefile文件的公共规则

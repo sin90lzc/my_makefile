@@ -2,10 +2,10 @@
 ROOT?=../..
 
 #需要生成的可执行文件名称
-BIN=main.out
+BIN=
 
 #需要生成的静态函数库名称
-LIBA=
+LIBA=libbar.a
 
 #需要生成的动态函数库名称
 LIBSO=
@@ -23,9 +23,9 @@ LIBSO=
 #LINK_LIB_PATH=
 
 #用于链接的函数库，默认当前模块生成的函数库
-LINK_LIB=libfoo.a libbar.a
+#LINK_LIB=
 
 #头文件搜索路径，默认为当前目录下的include目录
-INC_PATH=./include ../module1/include ../module2/include
+#INC_PATH=
 
 include ${ROOT}/build/public.mk
