@@ -10,6 +10,7 @@ ARFLAGS=crs
 SO_CFLAGS=-shared -fPIC
 
 CC=gcc
+CFLAGS?=
 
 #用于存放对象文件的目录
 DIR_OBJS=objs
@@ -137,7 +138,7 @@ ${LIBA}:${LIBA_DEPS}
 
 #对象文件的生成规则
 ${DIR_OBJS}/%.o:${DIR_OBJS_TMP} %.c
-	${CC} -o $@ ${INC_PATH} -c ${filter %.c,$^}
+	${CC} -o $@ ${INC_PATH} -c ${CFLAGS} ${filter %.c,$^}
 
 #依赖文件的生成规则
 ${DIR_DEPS}/%.dep:${DIR_DEPS_TMP} %.c
