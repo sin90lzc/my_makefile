@@ -106,7 +106,7 @@ LINK_LIB:=$(addprefix -l,${LINK_LIB})
 endif
 
 #头文件搜索路径，默认为当前目录下的include目录
-INC_PATH?=./include
+INC_PATH:=${INC_PATH} ./include ${ROOT}/include
 ifneq (${INC_PATH},"")
 INC_PATH:=$(addprefix -I,${INC_PATH})
 endif

@@ -25,7 +25,7 @@ LIBSO=
 #用于链接的函数库，默认当前模块生成的函数库
 #LINK_LIB=
 
-#头文件搜索路径，默认为当前目录下的include目录
+#头文件搜索路径，默认为当前目录下的include目录，及根目录下的include目录。在这里设置的INC_PATH是在默认目录的基础上添加的新的搜索目录。
 #INC_PATH=
 
 include ${ROOT}/build/public.mk
